@@ -1,10 +1,32 @@
+"""Extracts the Nusselt number data from a spherical run.
+
+Usage:
+    nusselt_time_avg.py [--t=<averaging time period>]
+    nusselt_time_avg.py | --help
+
+Options:
+    -h --help                           Display this help message
+    --t=<averaging time period>         Averaging time period [default: 500]
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
+from docopt import docopt
+from colours import *
+import os
 
-file='cod_nusselt.dat'
-timeAverage = 20000
+plt.rcParams['font.family'] = 'Serif'
+plt.rcParams['font.size'] = 10
+plt.rcParams['axes.linewidth'] = 1
+plt.rcParams["figure.autolayout"] = True
+cm = 1/2.54  # centimeters in inches
 
-with open(file, 'r') as f:
+args = docopt(__doc__)
+timeAverage = int(args['--t'])
+
+dataFile='cod_nusselt.dat'
+
+with open(dataFile, 'r') as f:
 
     data = f.read().split('\n')
     topNusselt = []
@@ -46,12 +68,27 @@ else:
 
 problemIdx, resetTime = find_problem_idx()
 percentageDifference = (abs(np.average(bottomNusselt[-timeAverage:]) - np.average(topNusselt[-timeAverage:])) / np.average(bottomNusselt[-timeAverage:])) * 100
+
+print('-'*60)
 print('The bottom Nusselt number is: {:.4f}'.format(np.average(bottomNusselt[-timeAverage:])))
 print('The top Nusselt number is: {:.4f}'.format(np.average(topNusselt[-timeAverage:])))
 print('The STD was: {:.4f}'.format(np.std(topNusselt[-timeAverage:])))
 print('The percentage differences is: {:.3f}%'.format(percentageDifference))
-plt.axvline(time[-timeAverage])
-plt.plot(time, topNusselt, label = '$Nu_T$')
-plt.plot(time, bottomNusselt, label = '$Nu_B$')
+print('The length of the text files is: {}'.format(len(bottomNusselt)))
+print('-'*60)
+
+if os.path.isdir('img') == True:
+    pass
+else:
+    os.system('mkdir img')
+
+fig = plt.figure(figsize=(7.5*cm, 9*cm))
+plt.axvline(time[-timeAverage], color = 'black', linestyle='dotted')
+plt.plot(time, topNusselt, label = '$Nu_T$', color = CB91_Blue)
+plt.plot(time, bottomNusselt, label = '$Nu_B$', color = CB91_Amber)
+plt.ylabel('Nu')
+plt.xlabel('Time')
 plt.legend(frameon=False, ncol=2)
+plt.savefig('img/nusselt_time_series.svg', dpi=500)
 plt.show()
+
