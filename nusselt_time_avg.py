@@ -92,3 +92,13 @@ plt.legend(frameon=False, ncol=2)
 plt.savefig('img/nusselt_time_series.svg', dpi=500)
 plt.show()
 
+cwd = os.getcwd()
+print('\n')
+print('-'*60)
+print('Copy to home command:')
+print('scp -r scbd@login.archer2.ac.uk:'+cwd+'/img .')
+print('-'*60)
+
+
+
+
