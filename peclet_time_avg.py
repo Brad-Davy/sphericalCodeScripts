@@ -1,13 +1,15 @@
 """Extracts the Nusselt number data from a spherical run.
 
 Usage:
-    nusselt_time_avg.py [--t=<averaging time period>]
+    nusselt_time_avg.py [--t=<averaging time period> --pr=<prandtl>]
     nusselt_time_avg.py | --help
 
 Options:
     -h --help                           Display this help message
     --t=<averaging time period>         Averaging time period [default: 500]
+    --pr=<prandtl number>               Prandtl number used in run [default: 1]
 """
+
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -23,7 +25,7 @@ cm = 1/2.54  # centimeters in inches
 file='vel_energy.dat'
 args = docopt(__doc__)
 timeAverage = int(args['--t'])
-Pr = 1
+Pr = float(args['--pr'])
 
 with open(file, 'r') as f:
 
