@@ -43,8 +43,7 @@ with open(dataFile, 'r') as f:
             topNusselt.append(float(lineData[7]))
             bottomNusselt.append(float(lineData[8]))
         except:
-git clone git@github.com:Brad-Davy/sphericalCodeScripts.git            pass
-
+            pass
 def find_problem_idx():
     problem_idx = 0
     reset_time = 0
