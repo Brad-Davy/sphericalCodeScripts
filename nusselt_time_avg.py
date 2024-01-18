@@ -43,7 +43,7 @@ with open(dataFile, 'r') as f:
             topNusselt.append(float(lineData[7]))
             bottomNusselt.append(float(lineData[8]))
         except:
-            pass
+git clone git@github.com:Brad-Davy/sphericalCodeScripts.git            pass
 
 def find_problem_idx():
     problem_idx = 0
@@ -95,8 +95,10 @@ plt.show()
 cwd = os.getcwd()
 print('\n')
 print('-'*60)
-print('Copy to home command:')
+print('Copy to home command for Archer2:')
 print('scp -r scbd@login.archer2.ac.uk:'+cwd+'/img .')
+print('Copy to home command for Arc4:')
+print('scp -r arc4.leeds.ac.uk:'+cwd+'/img .')
 print('-'*60)
 
 
