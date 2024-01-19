@@ -8,7 +8,7 @@
 #
 
 ## Number of 128 core nodes
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 
 ## Number of tasks per node
 #SBATCH --tasks-per-node=128
@@ -16,11 +16,8 @@
 #SBATCH --job-name=spherical_dns
 #SBATCH --account=n03-lds1
 #SBATCH --partition=standard
-#SBATCH --qos=long
-#SBATCH --time=48:00:00
-
-## Runtime in hh:mm:ss
-#SBATCH --time=48:00:00
+#SBATCH --qos=standard
+#SBATCH --time=5:00:00
 
 ## Ensure correct modules are loaded
 #module load epcc-job-env
