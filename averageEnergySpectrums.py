@@ -88,4 +88,4 @@ with open('img/mSTD.txt'.format(dir), 'w') as kineticFile:
     kineticFile.write(str(stdM))
 
 with open('img/lSTD.txt'.format(dir), 'w') as kineticFile:
-    kineticFile.write(str(averageL))
+    kineticFile.write(str(stdL))
