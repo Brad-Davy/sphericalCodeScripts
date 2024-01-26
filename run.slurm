@@ -8,7 +8,7 @@
 #
 
 ## Number of 128 core nodes
-#SBATCH --nodes=2
+#SBATCH --nodes=4
 
 ## Number of tasks per node
 #SBATCH --tasks-per-node=128
