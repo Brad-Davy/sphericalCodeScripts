@@ -72,11 +72,14 @@ for lines in fileIdx:
     M.append(valuesM)
     L.append(valuesL)
 
+M = np.array(M)
+L = np.array(L)
+
 print(np.shape(M))
 averageM = np.average(M, axis=0)
 averageL = np.average(L, axis=0)
-stdM = np.std(abs(M), axis=0)
-stdL = np.std(abs(L), axis=0)
+stdM = np.std(np.abs(M), axis=0)
+stdL = np.std(np.abs(L), axis=0)
 
 with open('img/mAverage.txt'.format(dir), 'w') as kineticFile:
     kineticFile.write(str(averageM))
