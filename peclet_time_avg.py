@@ -66,11 +66,14 @@ else:
 
 peclet = np.sqrt(2*np.array(peclet)/14.59)*Pr
 runTime = time[-1] * np.average(peclet[-timeAverage:])
+
+
 problemIdx, resetTime = find_problem_idx()
 print('-'*60)
 print('The Peclet number is: {:.4f}'.format(np.average(peclet[-timeAverage:])))
 print('The STD was: {:.4f}'.format(np.std(peclet[-timeAverage:])))
 print('The run time in convective overturn time is: {:.2f}'.format(runTime))
+print('Set number of iterations too:{:.0f}'.format(len(peclet) * (20 / runTime)))
 print('-'*60)
 
 if os.path.isdir('img') == True:
