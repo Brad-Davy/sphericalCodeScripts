@@ -86,4 +86,4 @@ ri = 0.5385
 
 L = ro - ri
 l = (L*np.sum(averageL * range(1, len(averageL)+1))) / (np.pi * np.sum(averageL))
-print('The length-scale is: {}'.format(l))
+print('The length-scale is: {}'.format(1/l))
