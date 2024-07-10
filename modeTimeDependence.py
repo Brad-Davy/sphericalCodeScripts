@@ -9,7 +9,7 @@ mypath='.'
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 velSpectrumFiles = []
 largestNumber = 0
-numOfTimeSteps = 350
+numOfTimeSteps = 330
 
 for lines in onlyfiles:
     if 'vel_spectrum' in lines:
@@ -94,13 +94,12 @@ plt.rcParams['axes.linewidth'] = 1
 plt.rcParams['figure.autolayout'] = True
 cm = 1/2.54
 
-print(np.shape(M))
 
 figSize = (15*cm, 6*cm)
 
 for modes in modesToTest:
     timeSeries = determineTimeSeries(M, mode=modes, time=T)
-    plt.plot(T, timeSeries, label = 'm={}'.format(modes))
+    plt.plot(sorted(T), timeSeries, label = 'm={}'.format(modes))
 
 
 plt.legend(ncol=4,frameon=False)
